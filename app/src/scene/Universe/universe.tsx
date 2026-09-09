@@ -1,18 +1,18 @@
 import type { FunctionComponent } from 'react'
 
 import { useLoader } from '@react-three/fiber'
-import { EquirectangularReflectionMapping, LinearSRGBColorSpace } from 'three'
-import { EXRLoader } from 'three/addons/loaders/EXRLoader.js'
+import { EquirectangularReflectionMapping, SRGBColorSpace, TextureLoader } from 'three'
 
 export const Universe: FunctionComponent = () => {
-  const texture = useLoader(EXRLoader, '/image/universe.exr')
+  const texture = useLoader(TextureLoader, '/image/universe.jpg')
 
   return (
     <primitive
       attach='background'
       object={texture}
       mapping={EquirectangularReflectionMapping}
-      colorSpace={LinearSRGBColorSpace}
+      flipY={false}
+      colorSpace={SRGBColorSpace}
     />
   )
 }
