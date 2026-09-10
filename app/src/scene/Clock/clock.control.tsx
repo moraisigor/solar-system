@@ -1,8 +1,8 @@
 import { useFrame } from '@react-three/fiber'
 
-import { useClock } from './use.clock'
+import { useClock } from './clock'
 
-export const ControlClock = () => {
+export const ClockControl = () => {
   const { time } = useClock()
 
   useFrame((_, value) => {
