@@ -4,7 +4,7 @@ import { useLoader } from '@react-three/fiber'
 import { EquirectangularReflectionMapping, SRGBColorSpace, TextureLoader } from 'three'
 
 export const Universe: FunctionComponent = () => {
-  const texture = useLoader(TextureLoader, '/image/universe.jpg')
+  const texture = useLoader(TextureLoader, '/image/universe/universe.jpg')
 
   return (
     <primitive
