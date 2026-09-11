@@ -4,12 +4,10 @@ import { useFrame, useLoader } from '@react-three/fiber'
 import { SRGBColorSpace, TextureLoader, type Group, type Mesh } from 'three'
 
 import { useClock } from '@/scene/Clock'
-import { useFocusBody } from '@/scene/Focus'
-import { PlanetLabel } from '@/scene/PlanetLabel'
+import { useFocusTarget } from '@/scene/Focus'
+import { Name } from '@/scene/Name'
 
-import { SUN_LIGHT_COLOR, SUN_LIGHT_INTENSITY } from '@/astronomy/constant'
-import { toScene } from '@/astronomy/kepler'
-import { SUN } from '@/astronomy/sun'
+import { SUN, SUN_LIGHT_COLOR, SUN_LIGHT_INTENSITY, toScene } from '@/astronomy'
 
 const radius = toScene(SUN.radius)
 const rotation = (Math.PI * 2) / SUN.rotation
@@ -25,14 +23,12 @@ export const Sun: FunctionComponent = () => {
   const texture = useLoader(TextureLoader, '/image/sun/sun.jpg')
 
   useFrame(() => {
-    const { current } = mesh
-
-    if (current) {
-      current.rotation.y = rotation * time.current
+    if (mesh.current) {
+      mesh.current.rotation.y = rotation * time.current
     }
   })
 
-  useFocusBody('sun', group, SUN.radius)
+  useFocusTarget('sun', group, radius)
 
   return (
     <group
@@ -55,7 +51,7 @@ export const Sun: FunctionComponent = () => {
         intensity={SUN_LIGHT_INTENSITY}
       />
       <group rotation={[-obliquity, 0, 0]}>
-        <PlanetLabel
+        <Name
           id='sun'
           name={SUN.name}
           radius={radius}
