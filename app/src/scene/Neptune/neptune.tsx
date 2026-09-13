@@ -6,7 +6,7 @@ import { SRGBColorSpace, TextureLoader, type Group, type Mesh } from 'three'
 import { useClock } from '@/scene/Clock'
 import { useFocusTarget } from '@/scene/Focus'
 import { Name } from '@/scene/Name'
-import { Ring } from '@/scene/Rings'
+import { Ring } from '@/scene/Ring'
 
 import { heliocentric, NEPTUNE, toSceneUnit } from '@/astronomy'
 import type { Vec } from '@/astronomy/kepler'
