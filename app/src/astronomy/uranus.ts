@@ -8,8 +8,10 @@ export const URANUS = {
   inclination: 0.77263783,
   eccentricity: 0.04725744,
   ring: {
-    in: 37_850,
-    out: 51_197,
+    radius: {
+      in: 37_850,
+      out: 51_197
+    },
     list: [
       { width: 3_500, depth: 0.004, radius: 39_600 },
       { width: 2, depth: 0.22, radius: 41_840 },
