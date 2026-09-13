@@ -7,9 +7,9 @@ import { useClock } from '@/scene/Clock'
 import { useFocusTarget } from '@/scene/Focus'
 import { Name } from '@/scene/Name'
 
-import { SUN, SUN_LIGHT_COLOR, SUN_LIGHT_INTENSITY, toScene } from '@/astronomy'
+import { SUN, SUN_LIGHT_COLOR, SUN_LIGHT_INTENSITY, toSceneUnit } from '@/astronomy'
 
-const radius = toScene(SUN.radius)
+const radius = toSceneUnit(SUN.radius)
 const rotation = (Math.PI * 2) / SUN.rotation
 const obliquity = (SUN.obliquity * Math.PI) / 180
 
