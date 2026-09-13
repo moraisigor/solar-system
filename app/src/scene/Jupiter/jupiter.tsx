@@ -35,7 +35,7 @@ export const Jupiter: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('jupiter', group, radius)
+  useFocusTarget('jupiter', group, { value: radius })
 
   const [x, y, z] = heliocentric(JUPITER, time.current)
 

@@ -35,7 +35,7 @@ export const Earth: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('earth', group, radius)
+  useFocusTarget('earth', group, { value: radius })
 
   const [x, y, z] = heliocentric(EARTH, time.current)
 

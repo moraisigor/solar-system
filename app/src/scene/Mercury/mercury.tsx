@@ -35,7 +35,7 @@ export const Mercury: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('mercury', group, radius)
+  useFocusTarget('mercury', group, { value: radius })
 
   const [x, y, z] = heliocentric(MERCURY, time.current)
 

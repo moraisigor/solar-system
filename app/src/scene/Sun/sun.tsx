@@ -28,7 +28,7 @@ export const Sun: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('sun', group, radius)
+  useFocusTarget('sun', group, { value: radius })
 
   return (
     <group

@@ -35,7 +35,7 @@ export const Venus: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('venus', group, radius)
+  useFocusTarget('venus', group, { value: radius })
 
   const [x, y, z] = heliocentric(VENUS, time.current)
 

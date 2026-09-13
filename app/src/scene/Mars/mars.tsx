@@ -35,7 +35,7 @@ export const Mars: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('mars', group, radius)
+  useFocusTarget('mars', group, { value: radius })
 
   const [x, y, z] = heliocentric(MARS, time.current)
 

@@ -36,7 +36,7 @@ export const Saturn: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('saturn', group, radius, toSceneUnit(SATURN.ring.out))
+  useFocusTarget('saturn', group, { value: radius, min: toSceneUnit(SATURN.ring.radius.out) })
 
   const [x, y, z] = heliocentric(SATURN, time.current)
 

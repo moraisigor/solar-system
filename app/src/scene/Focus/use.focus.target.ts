@@ -8,16 +8,18 @@ import type { ID } from './id'
 import { useFocus } from './use.focus'
 
 type Radius = {
-  min: number
+  min?: number
   value: number
 }
 
 export const useFocusTarget = (id: ID, object: RefObject<Object3D | null>, radius: Radius) => {
   const { add, remove } = useFocus()
 
+  const { min, value } = radius
+
   const distance = {
-    min: radius.min * 1.2,
-    inspect: radius.value * CLOSE_VIEW_DISTANCE_RADII
+    min: (min ?? value) * 1.2,
+    inspect: value * CLOSE_VIEW_DISTANCE_RADII
   }
 
   useEffect(() => {

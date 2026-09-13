@@ -36,7 +36,7 @@ export const Neptune: FunctionComponent = () => {
     }
   })
 
-  useFocusTarget('neptune', group, radius, toSceneUnit(NEPTUNE.ring.out))
+  useFocusTarget('neptune', group, { value: radius, min: toSceneUnit(NEPTUNE.ring.radius.out) })
 
   const [x, y, z] = heliocentric(NEPTUNE, time.current)
 
