@@ -8,15 +8,17 @@ export const NEPTUNE = {
   inclination: 1.77004347,
   eccentricity: 0.00859048,
   ring: {
-    in: 40_900,
-    out: 62_958,
     list: [
       { width: 2_000, depth: 0.00008, radius: 41_900 },
       { width: 113, depth: 0.0062, radius: 53_200 },
       { width: 4_000, depth: 0.00015, radius: 55_200 },
       { width: 100, depth: 0.00015, radius: 57_200 },
       { width: 35, depth: 0.011, radius: 62_933 }
-    ]
+    ],
+    radius: {
+      in: 40_900,
+      out: 62_958
+    }
   },
   longitude: {
     average: -55.12002969,
