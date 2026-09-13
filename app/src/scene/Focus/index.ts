@@ -1,4 +1,5 @@
 export type { Element } from './element'
+export type { ID } from './id'
 
 export { FocusProvider } from './focus.provider'
 export { Root } from './root'
