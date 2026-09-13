@@ -8,8 +8,10 @@ export const SATURN = {
   inclination: 2.48599187,
   eccentricity: 0.05386179,
   ring: {
-    in: 66_900,
-    out: 136_775
+    radius: {
+      in: 66_900,
+      out: 136_775
+    }
   },
   longitude: {
     average: 49.95424423,
