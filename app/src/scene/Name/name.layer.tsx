@@ -11,7 +11,6 @@ export const NameLayer: FunctionComponent = () => {
     const render = new CSS2DRenderer()
 
     const element = render.domElement
-
     element.style.inset = '0px'
     element.style.position = 'absolute'
     element.style.pointerEvents = 'none'

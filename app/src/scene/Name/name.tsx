@@ -15,11 +15,9 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   const object = useMemo(() => {
     const element = document.createElement('span')
-
     element.className = 'planet-label-anchor'
 
     const span = document.createElement('span')
-
     span.className = 'planet-label'
     span.textContent = name
 
