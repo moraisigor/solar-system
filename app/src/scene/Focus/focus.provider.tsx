@@ -9,7 +9,7 @@ export type FocusState = {
   current: ID | null
   root: RefObject<Group | null>
   origin: RefObject<boolean>
-  get: (id: ID) => Element | null
+  get: (id: ID | null) => Element | null
   add: (id: ID, element: Element) => void
   remove: (id: ID) => void
   focus: (id: ID | null) => void
