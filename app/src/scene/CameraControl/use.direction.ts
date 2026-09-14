@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 import { Vector3 } from 'three'
 
-export const useNavigate = () => {
+export const useDirection = () => {
   return useRef({
     time: 0,
     active: false,

@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/Addons.js'
 
 import { OVERVIEW } from './overview'
 import { useCamera } from './use.camera'
-import { useNavigate } from './use.navigate'
+import { useDirection } from './use.direction'
 import { useTarget } from './use.target'
 
 import { useFocus, type ID } from '../Focus'
@@ -17,7 +17,7 @@ const isZero = (direction: Vector3) => direction.length() < 1E-6
 export const useStart = (
   camera: ReturnType<typeof useCamera>,
   target: ReturnType<typeof useTarget>,
-  navigate: ReturnType<typeof useNavigate>,
+  direction: ReturnType<typeof useDirection>,
   control: OrbitControls
 ) => {
   const cam = useThree((state) => state.camera)
@@ -43,15 +43,15 @@ export const useStart = (
 
     camera.current.start.copy(cam.position)
     target.current.start.copy(control.target)
-    navigate.current.direction.copy(cam.position).sub(control.target)
+    direction.current.direction.copy(cam.position).sub(control.target)
 
-    if (isZero(navigate.current.direction)) {
-      navigate.current.direction.fromArray(OVERVIEW.position)
+    if (isZero(direction.current.direction)) {
+      direction.current.direction.fromArray(OVERVIEW.position)
     }
 
-    navigate.current.time = 0
-    navigate.current.active = true
-    navigate.current.direction.normalize()
+    direction.current.time = 0
+    direction.current.active = true
+    direction.current.direction.normalize()
 
     control.enabled = false
   }, [])
