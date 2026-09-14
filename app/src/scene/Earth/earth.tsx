@@ -21,7 +21,7 @@ export const Earth: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/textures/earth/earth_daymap_8k.jpg')
+  const texture = useLoader(TextureLoader, '/image/earth/earth.jpg')
 
   useFrame(() => {
     if (mesh.current) {
