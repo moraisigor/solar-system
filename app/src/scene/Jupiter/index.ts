@@ -1,3 +1,1 @@
-import { Jupiter } from './jupiter'
-
-export { Jupiter }
+export { Jupiter } from './jupiter'

@@ -1,3 +1,1 @@
-import { Mars } from './mars'
-
-export { Mars }
+export { Mars } from './mars'

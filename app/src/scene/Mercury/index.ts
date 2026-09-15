@@ -1,3 +1,1 @@
-import { Mercury } from './mercury'
-
-export { Mercury }
+export { Mercury } from './mercury'

@@ -1,3 +1,1 @@
-import { Venus } from './venus'
-
-export { Venus }
+export { Venus } from './venus'

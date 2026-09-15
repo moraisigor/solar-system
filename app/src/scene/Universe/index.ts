@@ -1,3 +1,1 @@
-import { Universe } from './universe'
-
-export { Universe }
+export { Universe } from './universe'

@@ -1,3 +1,1 @@
-import { Earth } from './earth'
-
-export { Earth }
+export { Earth } from './earth'

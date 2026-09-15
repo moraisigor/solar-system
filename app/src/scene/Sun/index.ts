@@ -1,3 +1,1 @@
-import { Sun } from './sun'
-
-export { Sun }
+export { Sun } from './sun'

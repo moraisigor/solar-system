@@ -1,3 +1,1 @@
-import { Uranus } from './uranus'
-
-export { Uranus }
+export { Uranus } from './uranus'

@@ -1,3 +1,1 @@
-import { Saturn } from './saturn'
-
-export { Saturn }
+export { Saturn } from './saturn'

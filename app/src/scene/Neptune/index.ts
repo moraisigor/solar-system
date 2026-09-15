@@ -1,3 +1,1 @@
-import { Neptune } from './neptune'
-
-export { Neptune }
+export { Neptune } from './neptune'

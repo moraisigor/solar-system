@@ -1,3 +1,1 @@
-import { SceneError } from './scene.error'
-
-export { SceneError }
+export { SceneError } from './scene.error'
