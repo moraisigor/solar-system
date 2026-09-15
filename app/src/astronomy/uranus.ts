@@ -3,7 +3,7 @@ export const URANUS = {
   axis: 19.18916464,
   orbit: 30687.15,
   radius: 25362,
-  rotation: -0.71833,
+  rotation: 0.71833,
   obliquity: 97.77,
   inclination: 0.77263783,
   eccentricity: 0.04725744,
