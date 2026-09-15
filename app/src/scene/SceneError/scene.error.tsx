@@ -1,6 +1,6 @@
 import { Suspense, type ReactNode } from 'react'
 
-import { Error } from './error'
+import { Scene } from './scene'
 
 type SceneErrorProps = {
   children: ReactNode
@@ -8,8 +8,8 @@ type SceneErrorProps = {
 
 export const SceneError = ({ children }: SceneErrorProps) => {
   return (
-    <Error>
+    <Scene>
       <Suspense fallback={null}>{children}</Suspense>
-    </Error>
+    </Scene>
   )
 }

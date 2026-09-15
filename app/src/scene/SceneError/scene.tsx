@@ -1,4 +1,4 @@
-import { Component, type ReactNode } from 'react'
+import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 type State = {
   error: boolean
@@ -8,11 +8,15 @@ type Props = {
   children: ReactNode
 }
 
-export class Error extends Component<Props, State> {
+export class Scene extends Component<Props, State> {
   state: State = { error: false }
 
   static getDerivedStateFromError = () => {
     return { error: true }
+  }
+
+  componentDidCatch = (e: Error, _: ErrorInfo) => {
+    console.error(e)
   }
 
   render = () => {
