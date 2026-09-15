@@ -67,9 +67,9 @@ export const SolarSystem: FunctionComponent = () => {
         }}>
         <ClockProvider value={clock}>
           <FocusProvider value={focus}>
+            <NameLayer />
             <ClockControl />
             <CameraControl />
-            <NameLayer />
             <SceneError>
               <Universe />
             </SceneError>
@@ -88,10 +88,7 @@ export const SolarSystem: FunctionComponent = () => {
           </FocusProvider>
         </ClockProvider>
       </Canvas>
-      <Panel
-        time={clock.time}
-        current={focus.current}
-      />
+      <Panel current={focus.current} />
     </div>
   )
 }
