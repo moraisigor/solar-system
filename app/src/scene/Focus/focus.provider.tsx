@@ -6,9 +6,8 @@ import type { Element } from './element'
 import type { ID } from './id'
 
 export type FocusState = {
-  current: ID | null
   root: RefObject<Group | null>
-  origin: RefObject<boolean>
+  current: ID | null
   get: (id: ID | null) => Element | null
   add: (id: ID, element: Element) => void
   remove: (id: ID) => void
