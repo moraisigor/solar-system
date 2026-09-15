@@ -8,7 +8,6 @@ import { useFocusTarget } from '@/scene/Focus'
 import { Name } from '@/scene/Name'
 
 import { heliocentric, MARS, toSceneUnit } from '@/astronomy'
-import type { Vec } from '@/astronomy/kepler'
 
 const radius = toSceneUnit(MARS.radius)
 const rotation = (Math.PI * 2) / MARS.rotation
@@ -37,14 +36,9 @@ export const Mars: FunctionComponent = () => {
 
   useFocusTarget('mars', group, { value: radius })
 
-  const [x, y, z] = heliocentric(MARS, time.current)
-
-  const position: Vec = [toSceneUnit(x), toSceneUnit(y), toSceneUnit(z)]
-
   return (
     <group
       ref={group}
-      position={position}
       rotation={[obliquity, 0, 0]}>
       <mesh ref={mesh}>
         <sphereGeometry args={[radius, 96, 64]} />

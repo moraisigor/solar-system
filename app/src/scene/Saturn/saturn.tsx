@@ -9,7 +9,6 @@ import { Name } from '@/scene/Name'
 import { RingImage } from '@/scene/Ring'
 
 import { heliocentric, SATURN, toSceneUnit } from '@/astronomy'
-import type { Vec } from '@/astronomy/kepler'
 
 const radius = toSceneUnit(SATURN.radius)
 const rotation = (Math.PI * 2) / SATURN.rotation
@@ -38,14 +37,9 @@ export const Saturn: FunctionComponent = () => {
 
   useFocusTarget('saturn', group, { value: radius, min: toSceneUnit(SATURN.ring.radius.out) })
 
-  const [x, y, z] = heliocentric(SATURN, time.current)
-
-  const position: Vec = [toSceneUnit(x), toSceneUnit(y), toSceneUnit(z)]
-
   return (
     <group
       ref={group}
-      position={position}
       rotation={[obliquity, 0, 0]}>
       <mesh ref={mesh}>
         <sphereGeometry args={[radius, 96, 64]} />

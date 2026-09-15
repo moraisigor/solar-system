@@ -37,14 +37,9 @@ export const Uranus: FunctionComponent = () => {
 
   useFocusTarget('uranus', group, { value: radius, min: toSceneUnit(URANUS.ring.radius.out) })
 
-  const [x, y, z] = heliocentric(URANUS, time.current)
-
-  const position: [number, number, number] = [toSceneUnit(x), toSceneUnit(y), toSceneUnit(z)]
-
   return (
     <group
       ref={group}
-      position={position}
       rotation={[obliquity, 0, 0]}>
       <mesh ref={mesh}>
         <sphereGeometry args={[radius, 96, 64]} />
