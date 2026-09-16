@@ -57,7 +57,7 @@ const copy = (array: Float32Array, image: ImageData) => {
   return image
 }
 
-const paint = (list: RingType[], radius: Radius) => {
+const paint = (list: readonly RingType[], radius: Radius) => {
   const array = new Float32Array(RADIAL)
 
   for (const ring of list) {
@@ -73,7 +73,7 @@ const paint = (list: RingType[], radius: Radius) => {
   return array
 }
 
-const create = (list: RingType[], radius: Radius) => {
+const create = (list: readonly RingType[], radius: Radius) => {
   const canvas = document.createElement('canvas')
   canvas.width = RADIAL
   canvas.height = 1
@@ -94,7 +94,7 @@ const create = (list: RingType[], radius: Radius) => {
 }
 
 type RingProps = {
-  list: RingType[]
+  list: readonly RingType[]
   radius: Radius
 }
 
