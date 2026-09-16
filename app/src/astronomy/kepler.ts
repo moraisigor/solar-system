@@ -12,7 +12,7 @@ export type Vec = [number, number, number]
 const mod = (radian: number): number => {
   const value = radian % (Math.PI * 2)
 
-  return Math.sign(value) === 1 ? value : value + Math.PI * 2
+  return value < 0 ? value + Math.PI * 2 : value
 }
 
 const radian = (degree: number): number => degree * (Math.PI / 180)
