@@ -2,7 +2,7 @@ import { useEffect, useMemo, type RefObject } from 'react'
 
 import type { Object3D } from 'three'
 
-import { CLOSE_VIEW_DISTANCE_RADII } from '@/astronomy'
+import { CAMERA_INSPECT } from '@/scene/constant'
 
 import type { ID } from './id'
 import { useFocus } from './use.focus'
@@ -12,6 +12,8 @@ type Radius = {
   value: number
 }
 
+const MARGIN = 1.2
+
 export const useFocusTarget = (id: ID, object: RefObject<Object3D | null>, radius: Radius) => {
   const { add, remove } = useFocus()
 
@@ -19,8 +21,8 @@ export const useFocusTarget = (id: ID, object: RefObject<Object3D | null>, radiu
 
   const distance = useMemo(() => {
     return {
-      min: (min ?? value) * 1.2,
-      inspect: value * CLOSE_VIEW_DISTANCE_RADII
+      min: (min ?? value) * MARGIN,
+      inspect: value * CAMERA_INSPECT
     }
   }, [min, value])
 
