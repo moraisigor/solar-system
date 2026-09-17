@@ -13,12 +13,6 @@ export const CameraControl: FunctionComponent = () => {
 
   const camera = useCameraView(control)
 
-  useFrame((state) => {
-    const { gl: web, scene, camera: cam } = state
-
-    web.render(scene, cam)
-  })
-
   useFrame(({ gl: web, scene, camera: cam }) => web.render(scene, cam), STAGE.DRAW)
 
   return <KeyLight camera={camera} />
