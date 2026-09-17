@@ -1,7 +1,9 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 
+import { useFrame } from '@react-three/fiber'
 import { BufferAttribute, BufferGeometry, Line, LineBasicMaterial } from 'three'
 
+import { MAX_OPACITY, MIN_OPACITY } from '@/scene/constant'
 import { useFocus } from '@/scene/Focus'
 
 import type { KeplerElement } from '@/type'
@@ -13,7 +15,9 @@ type OrbitPathProps = {
 }
 
 export const OrbitPath = ({ element }: OrbitPathProps) => {
-  const { current } = useFocus()
+  const { opacity } = useFocus()
+
+  const progress = useRef<number>(-1)
 
   const line = useMemo(() => {
     const position = orbit(element, 512).map((e) => toSceneUnit(e))
@@ -22,7 +26,7 @@ export const OrbitPath = ({ element }: OrbitPathProps) => {
 
     geometry.setAttribute('position', new BufferAttribute(position, 3))
 
-    const material = new LineBasicMaterial({ color: 0x9aa3ad, opacity: 0.55, transparent: true })
+    const material = new LineBasicMaterial({ color: 0x9aa3ad, opacity: MAX_OPACITY, transparent: true })
 
     return new Line(geometry, material)
   }, [element])
@@ -34,10 +38,15 @@ export const OrbitPath = ({ element }: OrbitPathProps) => {
     }
   }, [line])
 
-  return (
-    <primitive
-      object={line}
-      visible={current === null}
-    />
-  )
+  useFrame(() => {
+    if (opacity.current === progress.current) return
+    progress.current = opacity.current
+
+    const value = opacity.current * MAX_OPACITY
+
+    line.visible = value > MIN_OPACITY
+    line.material.opacity = value
+  })
+
+  return <primitive object={line} />
 }
