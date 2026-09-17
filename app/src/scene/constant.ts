@@ -6,6 +6,9 @@ export const STAGE = {
   LABEL: 4
 } as const
 
+export const MIN_OPACITY = 0.02
+export const MAX_OPACITY = 0.55
+
 export const MOVE_DURATION = 1.4
 
 export const CAMERA_INSPECT = 3.5
