@@ -1,8 +1,10 @@
 export type { Element } from './element'
 export type { ID } from './id'
+export type { FocusState } from './focus.provider'
 
 export { FocusProvider } from './focus.provider'
 export { Root } from './root'
 export { useFocus } from './use.focus'
 export { useFocusState } from './use.focus.state'
 export { useFocusTarget } from './use.focus.target'
+export { useFade, MIN_OPACITY } from './use.fade'
