@@ -3,6 +3,10 @@ import { useEffect, useMemo, type FunctionComponent } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { CSS2DRenderer } from 'three/examples/jsm/Addons.js'
 
+import { STAGE } from '@/scene/constant'
+
+import { useFade } from '../Focus'
+
 export const NameLayer: FunctionComponent = () => {
   const web = useThree((state) => state.gl)
   const size = useThree((state) => state.size)
@@ -18,7 +22,9 @@ export const NameLayer: FunctionComponent = () => {
     return render
   }, [])
 
-  useFrame(({ scene, camera }) => render.render(scene, camera), 1)
+  useFade()
+
+  useFrame(({ scene, camera }) => render.render(scene, camera), STAGE.LABEL)
 
   useEffect(() => render.setSize(size.width, size.height), [size, render])
 
