@@ -20,5 +20,5 @@ export const useEscape = (focus: (id: ID | null) => void) => {
     window.addEventListener('keydown', onKeyDown)
 
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+  }, [focus])
 }
