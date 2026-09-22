@@ -26,7 +26,7 @@ export const useCameraView = (control: OrbitControls) => {
     camera.start(current)
   }, [current, camera])
 
-  useFrame((_, time) => camera.tick(time, current), STAGE.CAMERA)
+  useFrame((_, time) => camera.tick(current, time), STAGE.CAMERA)
 
   return camera
 }
