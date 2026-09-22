@@ -9,6 +9,8 @@ type Position = {
 
 export type Vec = [number, number, number]
 
+const MIN_CORRECTION = 1e-12
+
 const mod = (radian: number): number => {
   const value = radian % (Math.PI * 2)
 
@@ -65,16 +67,12 @@ export const eccentric = (irregularity: number, eccentricity: number): number =>
   const average = mod(irregularity)
 
   const run = (value: number, step: number): number => {
-    if (step < 1) {
-      return value
-    }
+    if (step < 1) return value
 
     const correction =
       (value - eccentricity * Math.sin(value) - average) / (1 - eccentricity * Math.cos(value))
 
-    if (Math.abs(correction) < 1e-12) {
-      return value - correction
-    }
+    if (Math.abs(correction) < MIN_CORRECTION) return value - correction
 
     return run(value - correction, step - 1)
   }
@@ -82,6 +80,7 @@ export const eccentric = (irregularity: number, eccentricity: number): number =>
   return run(average, 12)
 }
 
+// yes, i know this is not a kepler function
 export const barycentric = (center: Vec, position: Vec, fraction: number): Position => {
   return {
     primary: [
