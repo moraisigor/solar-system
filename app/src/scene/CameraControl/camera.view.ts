@@ -6,7 +6,7 @@ import { MOVE_DURATION } from '@/scene/constant'
 import { pace } from './ease'
 import { OVERVIEW } from './overview'
 import { MIN_DISTANCE, span, type Position } from './position'
-import { STATE, type StateAction, type State } from './state'
+import { STATE, type State, type StateAction } from './state'
 
 import { type Element, type FocusState, type ID } from '../Focus'
 
@@ -29,7 +29,10 @@ export class CameraView {
     [STATE.ALL]: {
       frame: () => this.control.update(),
       enter: () => {
-        const { near, distance: { min, max } } = OVERVIEW
+        const {
+          near,
+          distance: { min, max }
+        } = OVERVIEW
 
         this.enable(min, max, near)
       }
@@ -185,11 +188,14 @@ export class CameraView {
   }
 
   private arrive(element: Element, position: Vector3) {
-    const { distance: { min, inspect } } = element
+    const {
+      distance: { min, inspect }
+    } = element
 
     this.control.target.copy(position)
 
-    if (this.cam.position.distanceTo(position) < min) this.cam.position.copy(position).addScaledVector(this.direction, inspect)
+    if (this.cam.position.distanceTo(position) < min)
+      this.cam.position.copy(position).addScaledVector(this.direction, inspect)
 
     this.cam.lookAt(this.control.target)
 

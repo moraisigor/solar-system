@@ -45,9 +45,7 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
     if (ambient.current === null) return
     if (direction.current === null) return
 
-    if (current) {
-      prev.current = current
-    }
+    if (current) prev.current = current
 
     const intensity = get(prev.current, opacity.current)
 
