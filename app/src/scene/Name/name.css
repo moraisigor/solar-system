@@ -9,5 +9,8 @@
 
   color: var(--white);
   cursor: pointer;
+}
+
+.content {
   pointer-events: auto;
 }

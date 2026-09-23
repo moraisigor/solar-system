@@ -26,6 +26,7 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   const { span, object } = useMemo(() => {
     const element = document.createElement('span')
+    element.className = 'content'
 
     const span = document.createElement('span')
     span.className = 'name'
