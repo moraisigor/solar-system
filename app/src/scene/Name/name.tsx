@@ -1,3 +1,5 @@
+import './name.css'
+
 import { useEffect, useMemo, useRef, type FunctionComponent } from 'react'
 
 import { useFrame } from '@react-three/fiber'
@@ -24,10 +26,9 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   const { span, object } = useMemo(() => {
     const element = document.createElement('span')
-    element.className = 'planet-label-anchor'
 
     const span = document.createElement('span')
-    span.className = 'planet-label'
+    span.className = 'name'
     span.textContent = name
 
     element.appendChild(span)
