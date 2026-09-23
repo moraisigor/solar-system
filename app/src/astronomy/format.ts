@@ -1,16 +1,16 @@
 import { UNIT } from "@/type"
 
-const MIN_DAY = 2
-const MIN_YEAR = 1
+const DAY = 2
+const YEAR = 365
 
 const digit = (e: number) => e.toLocaleString('en', { maximumFractionDigits: 2 })
 
 export const time = (e: number) => {
-  if (e < MIN_DAY) return `${digit(e)} ${UNIT.time.day}`
-  if (e < MIN_YEAR) return `${digit(e)} ${UNIT.time.year}`
-  return `${digit(e)} ${UNIT.time.year}`
+  if (e < DAY) return `${digit(e * 24)} ${UNIT.time.hour}`
+  if (e < YEAR) return `${digit(e)} ${UNIT.time.day}`
+  return `${digit(e / YEAR)} ${UNIT.time.year}`
 }
 
 export const degree = (e: number) => `${digit(e)}${UNIT.degree}`
 
-export const distance = (e: number) => `${digit(e)}${UNIT.distance.kilometer}`
+export const distance = (e: number) => `${digit(e)} ${UNIT.distance.kilometer}`
