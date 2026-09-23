@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-import type { ID } from './id'
+import type { ID } from '@/type'
 
 const KEY_ESC = 'Escape'
 

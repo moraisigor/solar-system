@@ -2,8 +2,9 @@ import { createContext, type ReactNode, type RefObject } from 'react'
 
 import type { Group } from 'three'
 
+import type { ID } from '@/type'
+
 import type { Element } from './element'
-import type { ID } from './id'
 
 export type FocusState = {
   current: ID | null

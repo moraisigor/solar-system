@@ -4,7 +4,8 @@ import type { Object3D } from 'three'
 
 import { CAMERA_INSPECT } from '@/scene/constant'
 
-import type { ID } from './id'
+import type { ID } from '@/type'
+
 import { useFocus } from './use.focus'
 
 type Radius = {

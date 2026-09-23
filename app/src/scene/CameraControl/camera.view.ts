@@ -3,12 +3,14 @@ import type { OrbitControls } from 'three/examples/jsm/Addons.js'
 
 import { MOVE_DURATION } from '@/scene/constant'
 
+import type { ID } from '@/type'
+
 import { pace } from './ease'
 import { OVERVIEW } from './overview'
 import { MIN_DISTANCE, span, type Position } from './position'
 import { STATE, type State, type StateAction } from './state'
 
-import { type Element, type FocusState, type ID } from '../Focus'
+import { type Element, type FocusState } from '../Focus'
 
 const MAX_WAIT = 1.5
 

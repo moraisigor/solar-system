@@ -5,11 +5,13 @@ import { Vector3, type AmbientLight, type DirectionalLight } from 'three'
 
 import { STAGE } from '@/scene/constant'
 
+import type { ID } from '@/type'
+
 import { SUN_LIGHT_COLOR } from '@/astronomy'
 
 import type { CameraView } from './camera.view'
 
-import { useFocus, type ID } from '../Focus'
+import { useFocus } from '../Focus'
 
 export type LightProps = {
   camera: CameraView

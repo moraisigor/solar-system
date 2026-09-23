@@ -6,9 +6,11 @@ import type { OrbitControls } from 'three/examples/jsm/Addons.js'
 
 import { STAGE } from '@/scene/constant'
 
+import type { ID } from '@/type'
+
 import { CameraView } from './camera.view'
 
-import { useFocus, type ID } from '../Focus'
+import { useFocus } from '../Focus'
 
 export const useCameraView = (control: OrbitControls) => {
   const cam = useThree((state) => state.camera as PerspectiveCamera)

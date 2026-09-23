@@ -1,5 +1,4 @@
 export type { Element } from './element'
-export type { ID } from './id'
 export type { FocusState } from './focus.provider'
 
 export { FocusProvider } from './focus.provider'

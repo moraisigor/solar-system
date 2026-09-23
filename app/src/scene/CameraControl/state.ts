@@ -1,4 +1,4 @@
-import { type ID } from '../Focus'
+import type { ID } from '@/type'
 
 export const STATE = {
   ALL: 1,

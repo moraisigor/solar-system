@@ -2,9 +2,10 @@ import { useCallback, useMemo, useRef, useState } from 'react'
 
 import type { Group } from 'three'
 
+import type { ID } from '@/type'
+
 import type { Element } from './element'
 import type { FocusState } from './focus.provider'
-import type { ID } from './id'
 import { useEscape } from './use.escape'
 
 export const useFocusState = (): FocusState => {

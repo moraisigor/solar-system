@@ -4,7 +4,8 @@ import { useFrame } from '@react-three/fiber'
 
 import { MOVE_DURATION, STAGE } from '@/scene/constant'
 
-import type { ID } from './id'
+import type { ID } from '@/type'
+
 import { useFocus } from './use.focus'
 
 const FADE_IN_START = 0.35
