@@ -1,9 +1,10 @@
-import type { FunctionComponent } from 'react'
+import { useMemo, type FunctionComponent } from 'react'
 
 import { Canvas } from '@react-three/fiber'
 import { ACESFilmicToneMapping } from 'three'
 
 import { EARTH, JUPITER, MARS, MERCURY, NEPTUNE, SATURN, URANUS, VENUS } from '@/astronomy'
+import { INFORMATION } from '@/astronomy/information'
 
 import { CameraControl, OVERVIEW } from '../CameraControl'
 import { ClockControl, ClockProvider, useClockState } from '../Clock'
@@ -50,6 +51,14 @@ export const SolarSystem: FunctionComponent = () => {
   const clock = useClockState()
   const focus = useFocusState()
 
+  const { current } = focus
+
+  const information = useMemo(() => {
+    if (current) return INFORMATION[current]
+
+    return null
+  }, [current])
+
   return (
     <div class='solar'>
       <Canvas
@@ -88,7 +97,7 @@ export const SolarSystem: FunctionComponent = () => {
           </FocusProvider>
         </ClockProvider>
       </Canvas>
-      <Panel current={focus.current} />
+      {information && <Panel information={information} />}
     </div>
   )
 }

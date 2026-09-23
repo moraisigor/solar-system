@@ -19,7 +19,9 @@ export const Panel: FunctionComponent<PanelProps> = ({ information: { name, valu
           const { name, value } = e
 
           return (
-            <div key={name} class='panel-row'>
+            <div
+              key={name}
+              class='panel-row'>
               <dt>{name}</dt>
               <dd>{value}</dd>
             </div>
