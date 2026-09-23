@@ -1,4 +1,4 @@
-import { UNIT, type ID } from '@/type'
+import { type ID } from '@/type'
 
 import { degree, distance, time } from '@/astronomy/format'
 
@@ -11,6 +11,7 @@ import { SATURN } from './saturn'
 import { SUN } from './sun'
 import { URANUS } from './uranus'
 import { VENUS } from './venus'
+import { capitalize } from 'lodash-es'
 
 type Format = {
   format: (e: number, unit: string) => string
@@ -38,7 +39,7 @@ const build = <K extends string>(e: { name: string } & Record<NoInfer<K>, number
     const { format } = property[key]
 
     return {
-      name: key,
+      name: capitalize(key),
       value: format(e[key])
     }
   })
