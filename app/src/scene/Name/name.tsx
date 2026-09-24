@@ -24,17 +24,12 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   const progress = useRef<number>(-1)
 
-  const { span, object } = useMemo(() => {
-    const element = document.createElement('span')
-    element.className = 'content'
+  const object = useMemo(() => {
+    const element = document.createElement('div')
+    element.className = 'name event'
+    element.textContent = name
 
-    const span = document.createElement('span')
-    span.className = 'name'
-    span.textContent = name
-
-    element.appendChild(span)
-
-    return { span, object: new CSS2DObject(element) }
+    return new CSS2DObject(element)
   }, [name])
 
   useEffect(() => {
@@ -49,9 +44,9 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
       focus(id)
     }
 
-    span.addEventListener('click', onClick)
+    object.element.addEventListener('click', onClick)
 
-    return () => span.removeEventListener('click', onClick)
+    return () => object.element.removeEventListener('click', onClick)
   }, [id, name, focus])
 
   useFrame(() => {
@@ -59,7 +54,6 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
     progress.current = opacity.current
 
     object.visible = opacity.current > MIN_OPACITY
-
     object.element.style.opacity = String(opacity.current)
   })
 

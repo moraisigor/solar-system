@@ -1,16 +1,10 @@
 .name {
-  left: 50%;
-  bottom: 8px;
-  position: absolute;
-  transform: translateX(-50%);
+  margin-top: -8px;
 
-  font-size: 14px;
-  font-weight: 500;
-
-  color: var(--white);
+  color: var(--text-primary);
   cursor: pointer;
 }
 
-.content {
+.event {
   pointer-events: auto;
 }
