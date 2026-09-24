@@ -1,4 +1,6 @@
-import type { FunctionComponent } from 'react'
+import './panel.css'
+
+import { Fragment, type FunctionComponent } from 'react'
 
 type PanelProps = {
   information: {
@@ -13,20 +15,14 @@ type PanelProps = {
 export const Panel: FunctionComponent<PanelProps> = ({ information: { name, values } }) => {
   return (
     <aside class='panel'>
-      <h2 class='panel-name'>{name}</h2>
+      <p>{name}</p>
       <dl>
-        {values.map((e) => {
-          const { name, value } = e
-
-          return (
-            <div
-              key={name}
-              class='panel-row'>
-              <dt>{name}</dt>
-              <dd>{value}</dd>
-            </div>
-          )
-        })}
+        {values.map(({ name, value }) => (
+          <Fragment key={name}>
+            <dt>{name}</dt>
+            <dd>{value}</dd>
+          </Fragment>
+        ))}
       </dl>
     </aside>
   )
