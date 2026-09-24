@@ -24,8 +24,6 @@ export const NameLayer: FunctionComponent = () => {
 
   useFade()
 
-  useFrame(({ scene, camera }) => render.render(scene, camera), STAGE.LABEL)
-
   useEffect(() => render.setSize(size.width, size.height), [size, render])
 
   useEffect(() => {
@@ -35,6 +33,8 @@ export const NameLayer: FunctionComponent = () => {
 
     return () => element.remove()
   }, [])
+
+  useFrame(({ scene, camera }) => render.render(scene, camera), STAGE.LABEL)
 
   return null
 }
