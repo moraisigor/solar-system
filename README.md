@@ -1,6 +1,8 @@
 # Solar System
 
-A solar system web application.
+A solar system web application simulation.
+
+The orbit comes from Keplerian elements referenced to the J2000 epoch, and the simulation solves the Kepler equation for every planet on every frame. It starts from today and then runs at one hour per second.
 
 ![Solar System](image/image.webp)
 
@@ -13,10 +15,10 @@ bun dev
 
 ## Next
 
-- add the moon
-- add the planet eris
-- add the planet ceres
-- add the planet pluto
+- add the Moon
+- add the planet Eris
+- add the planet Ceres
+- add the planet Pluto
 
 ## License
 
