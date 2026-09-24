@@ -17,7 +17,7 @@ type NameProps = {
   radius: number
 }
 
-const HEIGHT = 1.25
+const HEIGHT = 1.5
 
 export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
   const { opacity, focus } = useFocus()
