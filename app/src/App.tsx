@@ -4,7 +4,7 @@ import { SolarSystem } from '@/scene/SolarSystem'
 
 export const App: FunctionComponent = () => {
   return (
-    <div id='main'>
+    <div class='main'>
       <SolarSystem />
     </div>
   )
