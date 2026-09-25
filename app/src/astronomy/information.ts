@@ -13,7 +13,8 @@ import { URANUS } from './uranus'
 import { VENUS } from './venus'
 import { capitalize } from 'lodash-es'
 
-type Format = {
+type Property<K extends string> = {
+  key: K
   format: (e: number) => string
 }
 
@@ -25,22 +26,25 @@ type Information = {
   }[]
 }
 
-const PLANET = {
-  orbit: { format: time },
-  radius: { format: distance },
-  rotation: { format: time },
-  obliquity: { format: degree }
-}
+const PLANET = [
+  { key: 'orbit', format: time },
+  { key: 'radius', format: distance },
+  { key: 'rotation', format: time },
+  { key: 'obliquity', format: degree }
+] as const
 
-const build = <K extends string>(e: { name: string } & Record<NoInfer<K>, number>, property: Record<K, Format>): Information => {
-  const { name } = e
+const build = <K extends string>(
+  element: { name: string } & Record<NoInfer<K>, number>,
+  list: readonly Property<K>[]
+): Information => {
+  const { name } = element
 
-  const values = Object.keys(property).map((key) => {
-    const { format } = property[key]
+  const values = list.map((e) => {
+    const { key, format } = e
 
     return {
       name: capitalize(key),
-      value: format(e[key])
+      value: format(element[key])
     }
   })
 
@@ -48,11 +52,11 @@ const build = <K extends string>(e: { name: string } & Record<NoInfer<K>, number
 }
 
 export const INFORMATION: Record<ID, Information> = {
-  sun: build(SUN, {
-    radius: { format: distance },
-    rotation: { format: time },
-    obliquity: { format: degree },
-  }),
+  sun: build(SUN, [
+    { key: 'radius', format: distance },
+    { key: 'rotation', format: time },
+    { key: 'obliquity', format: degree }
+  ]),
   earth: build(EARTH, PLANET),
   jupiter: build(JUPITER, PLANET),
   mars: build(MARS, PLANET),
