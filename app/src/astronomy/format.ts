@@ -1,7 +1,8 @@
-import { UNIT } from "@/type"
+import { UNIT } from '@/type'
+import { EARTH } from "./earth"
 
 const DAY = 2
-const YEAR = 365
+const YEAR = EARTH.orbit
 
 const digit = (e: number) => e.toLocaleString('en', { maximumFractionDigits: 2 })
 
