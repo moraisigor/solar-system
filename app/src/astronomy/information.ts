@@ -1,3 +1,5 @@
+import { capitalize } from 'lodash-es'
+
 import { type ID } from '@/type'
 
 import { degree, distance, time } from '@/astronomy/format'
@@ -11,7 +13,6 @@ import { SATURN } from './saturn'
 import { SUN } from './sun'
 import { URANUS } from './uranus'
 import { VENUS } from './venus'
-import { capitalize } from 'lodash-es'
 
 type Property<K extends string> = {
   key: K
