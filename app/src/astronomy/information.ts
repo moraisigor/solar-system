@@ -14,7 +14,7 @@ import { VENUS } from './venus'
 import { capitalize } from 'lodash-es'
 
 type Format = {
-  format: (e: number, unit: string) => string
+  format: (e: number) => string
 }
 
 type Information = {
