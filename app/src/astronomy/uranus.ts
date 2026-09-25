@@ -1,7 +1,7 @@
 export const URANUS = {
   name: 'Uranus',
   axis: 19.18916464,
-  orbit: 30687.15,
+  orbit: 30687.401444,
   radius: 25362,
   rotation: 0.71833,
   obliquity: 97.77,

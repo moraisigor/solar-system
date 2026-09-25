@@ -1,7 +1,7 @@
 export const JUPITER = {
   name: 'Jupiter',
   axis: 5.202887,
-  orbit: 4332.589,
+  orbit: 4332.817128,
   radius: 69911,
   rotation: 0.41354,
   obliquity: 3.13,

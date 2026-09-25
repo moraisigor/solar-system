@@ -1,7 +1,7 @@
 export const EARTH = {
   name: 'Earth',
   axis: 1.00000261,
-  orbit: 365.25636,
+  orbit: 365.256367,
   radius: 6371.0084,
   rotation: 0.99726968,
   obliquity: 23.439281,

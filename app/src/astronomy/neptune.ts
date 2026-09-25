@@ -1,7 +1,7 @@
 export const NEPTUNE = {
   name: 'Neptune',
   axis: 30.06992276,
-  orbit: 60190.03,
+  orbit: 60189.659016,
   radius: 24622,
   rotation: 0.67125,
   obliquity: 28.32,

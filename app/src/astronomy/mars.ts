@@ -1,7 +1,7 @@
 export const MARS = {
   name: 'Mars',
   axis: 1.52371034,
-  orbit: 686.98,
+  orbit: 686.979732,
   radius: 3389.5,
   rotation: 1.02595676,
   obliquity: 25.19,

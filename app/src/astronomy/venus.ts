@@ -1,7 +1,7 @@
 export const VENUS = {
   name: 'Venus',
   axis: 0.72333566,
-  orbit: 224.700799,
+  orbit: 224.700801,
   radius: 6051.8,
   rotation: 243.018,
   obliquity: 177.36,
