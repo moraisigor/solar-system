@@ -19,6 +19,8 @@ bun dev
 - add the planet Eris
 - add the planet Ceres
 - add the planet Pluto
+- improve the Sun model
+- improve the Earth model
 
 ## License
 
