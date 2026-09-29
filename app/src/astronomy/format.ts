@@ -1,5 +1,6 @@
 import { UNIT } from '@/type'
-import { EARTH } from "./earth"
+
+import { EARTH } from './earth'
 
 const DAY = 2
 const YEAR = EARTH.orbit
