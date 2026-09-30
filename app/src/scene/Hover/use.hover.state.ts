@@ -5,9 +5,9 @@ import type { ID } from '@/type'
 import type { HoverState } from './hover.provider'
 
 export const useHoverState = (): HoverState => {
-  const current = useRef<ID | null>(null)
+  const value = useRef<ID | null>(null)
 
-  const hover = useCallback((id: ID | null) => current.current = id, [])
+  const hover = useCallback((id: ID | null) => value.current = id, [])
 
-  return useMemo(() => ({ id: current, hover }), [current, hover])
+  return useMemo(() => ({ id: value, hover }), [value, hover])
 }
