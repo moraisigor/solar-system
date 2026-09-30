@@ -6,7 +6,7 @@ export const STATE = {
   INSPECT: 3
 } as const
 
-export type State = typeof STATE[keyof typeof STATE]
+export type State = (typeof STATE)[keyof typeof STATE]
 
 export type StateAction = {
   frame: (id: ID | null, time: number) => void
