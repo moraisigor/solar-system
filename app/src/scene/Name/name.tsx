@@ -24,7 +24,9 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
   const { hover } = useHover()
   const { opacity, focus } = useFocus()
 
-  const progress = useRef<number>(-1)
+  const drawn = useRef({
+    opacity: -1
+  })
 
   const object = useMemo(() => {
     const element = document.createElement('div')
@@ -65,8 +67,8 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
   }, [id, name, object, hover, focus])
 
   useFrame(() => {
-    if (progress.current === opacity.current) return
-    progress.current = opacity.current
+    if (opacity.current === drawn.current.opacity) return
+      drawn.current.opacity = opacity.current
 
     object.visible = opacity.current > MIN_OPACITY
     object.element.style.opacity = String(opacity.current)
