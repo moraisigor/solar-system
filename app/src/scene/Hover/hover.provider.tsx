@@ -3,7 +3,7 @@ import { createContext, type ReactNode, type RefObject } from 'react'
 import type { ID } from '@/type'
 
 export type HoverState = {
-  current: RefObject<ID | null>
+  id: RefObject<ID | null>
   hover: (id: ID | null) => void
 }
 

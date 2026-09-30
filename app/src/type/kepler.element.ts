@@ -1,8 +1,8 @@
 export type KeplerElement = {
   axis: number
   orbit: number
-  eccentricity: number
   inclination: number
+  eccentricity: number
   longitude: {
     average: number
     ascending: number

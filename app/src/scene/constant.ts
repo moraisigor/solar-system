@@ -7,7 +7,8 @@ export const STAGE = {
 } as const
 
 export const MIN_OPACITY = 0.02
-export const MAX_OPACITY = 0.55
+export const MAX_OPACITY = 0.75
+export const HOVER_OPACITY = 0.95
 
 export const MOVE_DURATION = 1.4
 

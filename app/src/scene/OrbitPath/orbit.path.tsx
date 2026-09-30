@@ -1,35 +1,56 @@
 import { useEffect, useMemo, useRef } from 'react'
 
-import { useFrame } from '@react-three/fiber'
-import { BufferAttribute, BufferGeometry, Line, LineBasicMaterial } from 'three'
+import { useFrame, useThree } from '@react-three/fiber'
+import { Line2 } from 'three/addons/lines/Line2.js'
+import { LineGeometry } from 'three/addons/lines/LineGeometry.js'
+import { LineMaterial } from 'three/addons/lines/LineMaterial.js'
 
-import { MAX_OPACITY, MIN_OPACITY } from '@/scene/constant'
+import { MAX_OPACITY, MIN_OPACITY, HOVER_OPACITY } from '@/scene/constant'
 import { useFocus } from '@/scene/Focus'
+import { useHover } from '@/scene/Hover'
 
-import type { KeplerElement } from '@/type'
+import type { ID, KeplerElement } from '@/type'
 
 import { orbit, toSceneUnit } from '@/astronomy'
+import { COLOR } from './color'
 
 type OrbitPathProps = {
+  id: Exclude<ID, 'sun'>
   element: KeplerElement
 }
 
-export const OrbitPath = ({ element }: OrbitPathProps) => {
+const LINE_WIDTH = 1.2
+const LINE_WIDTH_HOVER = 2.4
+
+export const OrbitPath = ({ id, element }: OrbitPathProps) => {
+  const size = useThree((state) => state.size)
+
+  const { id: hover } = useHover()
+
   const { opacity } = useFocus()
 
+  const active = useRef<boolean>(false)
   const progress = useRef<number>(-1)
 
   const line = useMemo(() => {
     const position = orbit(element, 512).map((e) => toSceneUnit(e))
 
-    const geometry = new BufferGeometry()
+    const geometry = new LineGeometry()
+    geometry.setPositions(position)
 
-    geometry.setAttribute('position', new BufferAttribute(position, 3))
+    const material = new LineMaterial({
+      color: COLOR[id],
+      opacity: MAX_OPACITY,
+      transparent: true,
+      linewidth: LINE_WIDTH
+    })
 
-    const material = new LineBasicMaterial({ color: 0x9aa3ad, opacity: MAX_OPACITY, transparent: true })
+    return new Line2(geometry, material)
+  }, [id, element])
 
-    return new Line(geometry, material)
-  }, [element])
+  useEffect(() => {
+    line.material.resolution.set(size.width, size.height)
+  }, [line, size])
 
   useEffect(() => {
     return () => {
@@ -39,13 +60,20 @@ export const OrbitPath = ({ element }: OrbitPathProps) => {
   }, [line])
 
   useFrame(() => {
-    if (opacity.current === progress.current) return
+    const current = id === hover.current
+
+    if (current === active.current)
+      if (progress.current === opacity.current) return
+
+    active.current = current
     progress.current = opacity.current
 
-    const value = opacity.current * MAX_OPACITY
+    const value = opacity.current * (current ? HOVER_OPACITY : MAX_OPACITY)
 
     line.visible = value > MIN_OPACITY
+
     line.material.opacity = value
+    line.material.linewidth = current ? LINE_WIDTH_HOVER : LINE_WIDTH
   })
 
   return <primitive object={line} />

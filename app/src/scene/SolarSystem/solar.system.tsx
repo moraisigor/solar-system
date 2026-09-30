@@ -10,6 +10,7 @@ import { CameraControl, OVERVIEW } from '../CameraControl'
 import { ClockControl, ClockProvider, useClockState } from '../Clock'
 import { Earth } from '../Earth'
 import { FocusProvider, Root, useFocusState } from '../Focus'
+import { HoverProvider, useHoverState } from '../Hover'
 import { Jupiter } from '../Jupiter'
 import { Mars } from '../Mars'
 import { Mercury } from '../Mercury'
@@ -49,6 +50,8 @@ const ELEMENT = [
 
 export const SolarSystem: FunctionComponent = () => {
   const clock = useClockState()
+
+  const hover = useHoverState()
   const focus = useFocusState()
 
   const { current } = focus
@@ -75,26 +78,31 @@ export const SolarSystem: FunctionComponent = () => {
           position: OVERVIEW.position
         }}>
         <ClockProvider value={clock}>
-          <FocusProvider value={focus}>
-            <NameLayer />
-            <ClockControl />
-            <CameraControl />
-            <SceneError>
-              <Universe />
-            </SceneError>
-            <Root>
-              {ORBIT.map(([id, orbit]) => (
-                <SceneError key={id}>
-                  <OrbitPath element={orbit} />
-                </SceneError>
-              ))}
-              {ELEMENT.map(([id, Element]) => (
-                <SceneError key={id}>
-                  <Element />
-                </SceneError>
-              ))}
-            </Root>
-          </FocusProvider>
+          <HoverProvider value={hover}>
+            <FocusProvider value={focus}>
+              <NameLayer />
+              <ClockControl />
+              <CameraControl />
+              <SceneError>
+                <Universe />
+              </SceneError>
+              <Root>
+                {ORBIT.map(([id, element]) => (
+                  <SceneError key={id}>
+                    <OrbitPath
+                      id={id}
+                      element={element}
+                    />
+                  </SceneError>
+                ))}
+                {ELEMENT.map(([id, Element]) => (
+                  <SceneError key={id}>
+                    <Element />
+                  </SceneError>
+                ))}
+              </Root>
+            </FocusProvider>
+          </HoverProvider>
         </ClockProvider>
       </Canvas>
       {information && <Panel information={information} />}

@@ -3,13 +3,14 @@ import './name.css'
 import { useEffect, useMemo, useRef, type FunctionComponent } from 'react'
 
 import { useFrame } from '@react-three/fiber'
-import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
+import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js'
 
 import { MIN_OPACITY } from '@/scene/constant'
 
 import type { ID } from '@/type'
 
 import { useFocus } from '../Focus'
+import { useHover } from '../Hover'
 
 type NameProps = {
   id: ID
@@ -20,6 +21,7 @@ type NameProps = {
 const HEIGHT = 1.5
 
 export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
+  const { hover } = useHover()
   const { opacity, focus } = useFocus()
 
   const progress = useRef<number>(-1)
@@ -37,6 +39,9 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
   }, [object])
 
   useEffect(() => {
+    const onExit = () => hover(null)
+    const onEnter = () => hover(id)
+
     const onClick = (event: MouseEvent) => {
       event.preventDefault()
       event.stopPropagation()
@@ -44,13 +49,23 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
       focus(id)
     }
 
-    object.element.addEventListener('click', onClick)
+    const { element } = object
 
-    return () => object.element.removeEventListener('click', onClick)
-  }, [id, name, focus])
+    element.addEventListener('click', onClick)
+    element.addEventListener('pointerenter', onEnter)
+    element.addEventListener('pointerleave', onExit)
+
+    return () => {
+      element.removeEventListener('click', onClick)
+      element.removeEventListener('pointerenter', onEnter)
+      element.removeEventListener('pointerleave', onExit)
+
+      hover(null)
+    }
+  }, [id, name, object, hover, focus])
 
   useFrame(() => {
-    if (opacity.current === progress.current) return
+    if (progress.current === opacity.current) return
     progress.current = opacity.current
 
     object.visible = opacity.current > MIN_OPACITY
