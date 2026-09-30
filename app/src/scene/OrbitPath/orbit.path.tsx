@@ -5,13 +5,14 @@ import { Line2 } from 'three/addons/lines/Line2.js'
 import { LineGeometry } from 'three/addons/lines/LineGeometry.js'
 import { LineMaterial } from 'three/addons/lines/LineMaterial.js'
 
-import { MAX_OPACITY, MIN_OPACITY, HOVER_OPACITY } from '@/scene/constant'
+import { HOVER_OPACITY, MAX_OPACITY, MIN_OPACITY } from '@/scene/constant'
 import { useFocus } from '@/scene/Focus'
 import { useHover } from '@/scene/Hover'
 
 import type { ID, KeplerElement } from '@/type'
 
 import { orbit, toSceneUnit } from '@/astronomy'
+
 import { COLOR } from './color'
 
 type OrbitPathProps = {
@@ -64,8 +65,7 @@ export const OrbitPath = ({ id, element }: OrbitPathProps) => {
   useFrame(() => {
     const hover = id === pointer.current
 
-    if (hover === drawn.current.hover)
-      if (opacity.current === drawn.current.opacity) return
+    if (hover === drawn.current.hover && opacity.current === drawn.current.opacity) return
 
     drawn.current = {
       hover,

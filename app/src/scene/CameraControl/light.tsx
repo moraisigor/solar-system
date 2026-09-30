@@ -20,9 +20,9 @@ export type LightProps = {
 const DIM = 0.1
 const INTENSITY = Math.PI
 
-const force = (prev: ID | null, opacity: number) => {
-  if (prev) {
-    if (prev === 'sun') return 0
+const force = (id: ID | null, opacity: number) => {
+  if (id) {
+    if (id === 'sun') return 0
 
     return 1 - opacity
   }
@@ -33,14 +33,13 @@ const force = (prev: ID | null, opacity: number) => {
 export const Light: FunctionComponent<LightProps> = ({ camera }) => {
   const { current, opacity } = useFocus()
 
-  const prev = useRef<ID | null>(null)
-
   const drawn = useRef({
     intensity: -1
   })
 
-  const ambient = useRef<AmbientLight | null>(null)
+  const subject = useRef<ID | null>(null)
 
+  const ambient = useRef<AmbientLight | null>(null)
   const direction = useRef<DirectionalLight | null>(null)
 
   const position = useMemo(() => new Vector3(), [])
@@ -49,9 +48,9 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
     if (ambient.current === null) return
     if (direction.current === null) return
 
-    if (current) prev.current = current
+    if (current) subject.current = current
 
-    const intensity = force(prev.current, opacity.current)
+    const intensity = force(subject.current, opacity.current)
 
     if (intensity > 0) {
       direction.current.position.copy(cam.position)
@@ -66,7 +65,7 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
     }
 
     if (intensity === drawn.current.intensity) return
-      drawn.current.intensity = intensity
+    drawn.current.intensity = intensity
 
     ambient.current.intensity = INTENSITY * intensity
     direction.current.intensity = DIM + (INTENSITY - DIM) * intensity

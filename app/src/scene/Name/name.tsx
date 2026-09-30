@@ -68,7 +68,7 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   useFrame(() => {
     if (opacity.current === drawn.current.opacity) return
-      drawn.current.opacity = opacity.current
+    drawn.current.opacity = opacity.current
 
     object.visible = opacity.current > MIN_OPACITY
     object.element.style.opacity = String(opacity.current)
