@@ -9,5 +9,5 @@ export const useHoverState = (): HoverState => {
 
   const hover = useCallback((id: ID | null) => current.current = id, [])
 
-  return useMemo(() => ({ current, hover }), [current, hover])
+  return useMemo(() => ({ id: current, hover }), [current, hover])
 }
