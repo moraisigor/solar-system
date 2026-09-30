@@ -25,12 +25,14 @@ const LINE_WIDTH_HOVER = 2.4
 export const OrbitPath = ({ id, element }: OrbitPathProps) => {
   const size = useThree((state) => state.size)
 
-  const { id: hover } = useHover()
+  const { id: pointer } = useHover()
 
   const { opacity } = useFocus()
 
-  const active = useRef<boolean>(false)
-  const progress = useRef<number>(-1)
+  const drawn = useRef({
+    hover: false,
+    opacity: -1
+  })
 
   const line = useMemo(() => {
     const position = orbit(element, 512).map((e) => toSceneUnit(e))
@@ -60,20 +62,21 @@ export const OrbitPath = ({ id, element }: OrbitPathProps) => {
   }, [line])
 
   useFrame(() => {
-    const current = id === hover.current
+    const hover = id === pointer.current
 
-    if (current === active.current)
-      if (progress.current === opacity.current) return
+    if (hover === drawn.current.hover)
+      if (opacity.current === drawn.current.opacity) return
 
-    active.current = current
-    progress.current = opacity.current
+    drawn.current = {
+      hover,
+      opacity: opacity.current
+    }
 
-    const value = opacity.current * (current ? HOVER_OPACITY : MAX_OPACITY)
+    const value = opacity.current * (hover ? HOVER_OPACITY : MAX_OPACITY)
 
     line.visible = value > MIN_OPACITY
-
     line.material.opacity = value
-    line.material.linewidth = current ? LINE_WIDTH_HOVER : LINE_WIDTH
+    line.material.linewidth = hover ? LINE_WIDTH_HOVER : LINE_WIDTH
   })
 
   return <primitive object={line} />
