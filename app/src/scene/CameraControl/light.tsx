@@ -35,7 +35,9 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
 
   const prev = useRef<ID | null>(null)
 
-  const progress = useRef<number>(-1)
+  const drawn = useRef({
+    intensity: -1
+  })
 
   const ambient = useRef<AmbientLight | null>(null)
 
@@ -63,8 +65,8 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
       }
     }
 
-    if (progress.current === intensity) return
-    progress.current = intensity
+    if (intensity === drawn.current.intensity) return
+      drawn.current.intensity = intensity
 
     ambient.current.intensity = INTENSITY * intensity
     direction.current.intensity = DIM + (INTENSITY - DIM) * intensity
