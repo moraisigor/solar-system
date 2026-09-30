@@ -1,7 +1,7 @@
 import { useEffect, useMemo, type FunctionComponent } from 'react'
 
 import { useFrame, useThree } from '@react-three/fiber'
-import { CSS2DRenderer } from 'three/examples/jsm/Addons.js'
+import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js'
 
 import { STAGE } from '@/scene/constant'
 

@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 
 import { useThree } from '@react-three/fiber'
 import type { Camera } from 'three'
-import { OrbitControls } from 'three/examples/jsm/Addons.js'
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 import { OVERVIEW } from './overview'
 

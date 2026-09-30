@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react'
 
 import { useFrame, useThree } from '@react-three/fiber'
 import type { PerspectiveCamera } from 'three'
-import type { OrbitControls } from 'three/examples/jsm/Addons.js'
+import type { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 import { STAGE } from '@/scene/constant'
 

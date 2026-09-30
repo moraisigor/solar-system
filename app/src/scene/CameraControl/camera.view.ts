@@ -1,5 +1,5 @@
 import { Vector3, type Object3D, type PerspectiveCamera } from 'three'
-import type { OrbitControls } from 'three/examples/jsm/Addons.js'
+import type { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 
 import { MOVE_DURATION } from '@/scene/constant'
 
