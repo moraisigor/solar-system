@@ -20,7 +20,7 @@ export type LightProps = {
 const DIM = 0.1
 const INTENSITY = Math.PI
 
-const get = (prev: ID | null, opacity: number) => {
+const force = (prev: ID | null, opacity: number) => {
   if (prev) {
     if (prev === 'sun') return 0
 
@@ -51,7 +51,7 @@ export const Light: FunctionComponent<LightProps> = ({ camera }) => {
 
     if (current) prev.current = current
 
-    const intensity = get(prev.current, opacity.current)
+    const intensity = force(prev.current, opacity.current)
 
     if (intensity > 0) {
       direction.current.position.copy(cam.position)
