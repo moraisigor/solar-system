@@ -1,5 +1,3 @@
-import './name.css'
-
 import { useEffect, useMemo, useRef, type FunctionComponent } from 'react'
 
 import { useFrame } from '@react-three/fiber'
@@ -8,6 +6,8 @@ import { CSS2DObject } from 'three/addons/renderers/CSS2DRenderer.js'
 import { MIN_OPACITY } from '@/scene/constant'
 
 import type { ID } from '@/type'
+
+import style from './name.module.css'
 
 import { useFocus } from '../Focus'
 import { useHover } from '../Hover'
@@ -30,7 +30,7 @@ export const Name: FunctionComponent<NameProps> = ({ id, name, radius }) => {
 
   const object = useMemo(() => {
     const element = document.createElement('div')
-    element.className = 'name event'
+    element.className = `${style.name} ${style.event}`
     element.textContent = name
 
     return new CSS2DObject(element)

@@ -1,6 +1,6 @@
-import './panel.css'
-
 import { Fragment, type FunctionComponent } from 'react'
+
+import style from './panel.module.css'
 
 type PanelProps = {
   information: {
@@ -14,7 +14,7 @@ type PanelProps = {
 
 export const Panel: FunctionComponent<PanelProps> = ({ information: { name, values } }) => {
   return (
-    <aside class='panel'>
+    <aside class={style.panel}>
       <p>{name}</p>
       <dl>
         {values.map(({ name, value }) => (
