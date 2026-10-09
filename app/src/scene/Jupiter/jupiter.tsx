@@ -20,7 +20,7 @@ export const Jupiter: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/jupiter/jupiter.jpg')
+  const texture = useLoader(TextureLoader, '/image/jupiter/jupiter.webp')
 
   useFrame(() => {
     if (mesh.current) {
