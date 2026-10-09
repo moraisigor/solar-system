@@ -21,7 +21,7 @@ export const Uranus: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/uranus/uranus.jpg')
+  const texture = useLoader(TextureLoader, '/image/uranus/uranus.webp')
 
   useFrame(() => {
     if (mesh.current) {
