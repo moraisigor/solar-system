@@ -20,7 +20,7 @@ export const Venus: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/venus/venus.jpg')
+  const texture = useLoader(TextureLoader, '/image/venus/venus.webp')
 
   useFrame(() => {
     if (mesh.current) {
