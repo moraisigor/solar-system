@@ -21,7 +21,7 @@ export const Saturn: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const [ring, texture] = useLoader(TextureLoader, ['/image/saturn/ring.png', '/image/saturn/saturn.jpg'])
+  const [ring, texture] = useLoader(TextureLoader, ['/image/saturn/ring.webp', '/image/saturn/saturn.webp'])
 
   useFrame(() => {
     if (mesh.current) {
