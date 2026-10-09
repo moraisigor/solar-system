@@ -20,7 +20,7 @@ export const Mercury: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/mercury/mercury.jpg')
+  const texture = useLoader(TextureLoader, '/image/mercury/mercury.webp')
 
   useFrame(() => {
     if (mesh.current) {
