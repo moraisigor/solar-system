@@ -21,7 +21,7 @@ export const Neptune: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/neptune/neptune.jpg')
+  const texture = useLoader(TextureLoader, '/image/neptune/neptune.webp')
 
   useFrame(() => {
     if (mesh.current) {
