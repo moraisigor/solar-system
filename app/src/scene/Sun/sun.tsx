@@ -20,7 +20,7 @@ export const Sun: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/sun/sun.jpg')
+  const texture = useLoader(TextureLoader, '/image/sun/sun.webp')
 
   useFrame(() => {
     if (mesh.current) {
