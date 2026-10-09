@@ -20,7 +20,7 @@ export const Earth: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/earth/earth.jpg')
+  const texture = useLoader(TextureLoader, '/image/earth/earth.webp')
 
   useFrame(() => {
     if (mesh.current) {
