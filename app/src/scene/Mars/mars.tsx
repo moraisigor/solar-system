@@ -20,7 +20,7 @@ export const Mars: FunctionComponent = () => {
 
   const group = useRef<Group>(null)
 
-  const texture = useLoader(TextureLoader, '/image/mars/mars.jpg')
+  const texture = useLoader(TextureLoader, '/image/mars/mars.webp')
 
   useFrame(() => {
     if (mesh.current) {
